@@ -1,4 +1,4 @@
-import 'package:doctor_appoitment/screens/Page_view_screen.dart';
+import 'package:doctor_appoitment/screens/onBoarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -22,6 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-  
