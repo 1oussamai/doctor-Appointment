@@ -3,21 +3,30 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    super.key, required this.hintText,
+    super.key,
+    required this.hintText, this.suffixIcon,
   });
-final String hintText;
+  final String hintText;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        fillColor: Colors.green,
+        fillColor: Colors.white70,
         hintText: hintText,
+        filled: true,
+        suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: kPrimeryColor),
+          borderSide: const BorderSide(color: kPrimeryColor),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: kPrimeryColor),
+          borderSide: const BorderSide(color: kPrimeryColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.grey),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );

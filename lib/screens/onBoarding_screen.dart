@@ -6,6 +6,6 @@ class PageViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnboardingScreenBody();
+    return const OnboardingScreenBody();
   }
 }

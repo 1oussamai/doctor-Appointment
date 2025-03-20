@@ -57,6 +57,7 @@ class LoginPageBody extends StatelessWidget {
               ),
               const CustomTextField(
                 hintText: 'Password',
+                suffixIcon: Icon(Icons.visibility_off),
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
