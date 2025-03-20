@@ -17,9 +17,12 @@ class IntroBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(image),
+          const SizedBox(
+            height: 22,
+          ),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Color(0XFF0165FC)),

@@ -1,3 +1,5 @@
+import 'package:doctor_appoitment/constants.dart';
+import 'package:doctor_appoitment/screens/login_page.dart';
 import 'package:doctor_appoitment/widget/intro_body.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -16,34 +18,56 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      PageView(
-        controller: controller,
-        children: const [
-          IntroBody(
-            image: 'assets/images/docters-Photoroom.png',
-            text: 'this appllicatio',
-            subtitle: 'now we are goin to discover',
-          ),
-          IntroBody(
-            image: 'assets/images/Appointment-Photoroom.png',
-            text: 'this appllicatio',
-            subtitle: 'now we are goin to discover',
-          ),
-          IntroBody(
-            image: 'assets/images/Schedule-Photoroom.png',
-            text: 'this appllicatio',
-            subtitle: 'now we are goin to discover',
-          ),
-        ],
-      ),
-      Container(
-        alignment: const Alignment(0, 0.75),
-        child: SmoothPageIndicator(
+    return Scaffold(
+      body: Stack(children: [
+        PageView(
           controller: controller,
-          count: 3,
+          children: const [
+            IntroBody(
+              image: 'assets/images/docters-Photoroom2.png',
+              text: 'this appllicatio',
+              subtitle: 'now we are goin to discover',
+            ),
+            IntroBody(
+              image: 'assets/images/Appointment-Photoroom.png',
+              text: 'this appllicatio',
+              subtitle: 'now we are goin to discover',
+            ),
+            IntroBody(
+              image: 'assets/images/Schedule-Photoroom.png',
+              text: 'this appllicatio',
+              subtitle: 'now we are goin to discover',
+            ),
+          ],
         ),
-      )
-    ]);
+        Container(
+          alignment: const Alignment(0, 0.75),
+          child: SmoothPageIndicator(
+            controller: controller,
+            count: 3,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return LoginPage();
+              }),
+            );
+          },
+          child: Container(
+            alignment: const Alignment(0.8, -0.85),
+            child: const Text(
+              'skip',
+              style: TextStyle(
+                fontSize: 20,
+                color: kPrimeryColor,
+              ),
+            ),
+          ),
+        )
+      ]),
+    );
   }
 }
