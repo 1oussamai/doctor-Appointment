@@ -1,3 +1,5 @@
+
+import 'package:doctor_appoitment/widget/login_page_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -5,17 +7,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('SING IN'),
-            Text('welcome back ! you have been missed'),
-          ],
-        ),
-      ),
-    );
+    // ignore: prefer_const_constructors
+    return LoginPageBody();
   }
 }
+
