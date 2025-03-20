@@ -1,4 +1,6 @@
 import 'package:doctor_appoitment/constants.dart';
+import 'package:doctor_appoitment/screens/home_page.dart';
+import 'package:doctor_appoitment/widget/costom_bottom.dart';
 import 'package:doctor_appoitment/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -11,32 +13,76 @@ class LoginPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return SafeArea(
-      child: const Scaffold(
+      child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'SING IN',
+              const Text(
+                'Sing In',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('welcome back ! you have been missed'),
-              SizedBox(
+              const Text('welcome back ! you have been missed'),
+              const SizedBox(
                 height: 80,
               ),
-              CustomTextField(
+              const Row(
+                children: [
+                  Text(
+                    'Email',
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+              const CustomTextField(
                 hintText: 'oussama@example.com',
               ),
-              SizedBox(
-                height: 10,
+              const SizedBox(
+                height: 20,
               ),
-              CustomTextField(
+              const Row(
+                children: [
+                  Text(
+                    'Password',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              const CustomTextField(
                 hintText: 'Password',
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Forget password ?',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: kPrimeryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // adding my costum botton
+
+              CostomBottom(
+                text: 'Sing in',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                },
               ),
             ],
           ),
