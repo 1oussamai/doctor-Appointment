@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.hintText, this.suffixIcon,
+    required this.hintText, this.suffixIcon, this.validator, this.controller,
   });
   final String hintText;
   final Widget? suffixIcon;
+ final String? Function(String?)? validator;
+ final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      controller: controller ,
+      validator: validator ,
       decoration: InputDecoration(
         fillColor: Colors.white70,
         hintText: hintText,
@@ -29,6 +33,9 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
+
+    
+
     );
   }
 }
