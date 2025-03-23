@@ -1,3 +1,4 @@
+import 'package:doctor_appoitment/widget/sing_up_body.dart';
 import 'package:flutter/material.dart';
 
 class SingUpScreen extends StatelessWidget {
@@ -5,8 +6,7 @@ class SingUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("home")),
-    );
+    return const SingUpBody();
   }
 }
+
