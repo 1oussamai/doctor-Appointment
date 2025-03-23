@@ -1,4 +1,5 @@
 import 'package:doctor_appoitment/constants.dart';
+import 'package:doctor_appoitment/screens/Sing_up_screen.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
 import 'package:doctor_appoitment/widget/custom_text_field.dart';
@@ -70,7 +71,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                 ),
                 CustomTextField(
                   hintText: 'Password',
-                  suffixIcon: Icon(Icons.visibility_off),
+                  suffixIcon: const Icon(Icons.visibility_off),
                   validator: confirmPassword,
                 ),
                 const Row(
@@ -104,11 +105,36 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     }
                   },
                 ),
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 20,
                 ),
 
-                LogingWithFacebookAndGoogle(),
+                const LogingWithFacebookAndGoogle(),
+
+                const SizedBox(
+                  height: 20,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Dont have an account? "),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const SingUpScreen();
+                        }));
+                      },
+                      child: const Text("Sing up",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: kPrimeryColor,
+                            fontWeight: FontWeight.w600,
+                          )),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
