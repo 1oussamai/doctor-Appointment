@@ -5,13 +5,20 @@ class LogingWithFacebookAndGoogle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Row(
           children: [
-            Text('or'),
+            Expanded(child: Divider(thickness: 1, color: Colors.grey[300])),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Text("OR Login with"),
+            ),
+            Expanded(child: Divider(thickness: 1, color: Colors.grey[300])),
           ],
-        )
+        ),
+        
+
       ],
     );
   }
