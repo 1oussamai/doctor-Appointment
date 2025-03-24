@@ -1,10 +1,9 @@
-import 'package:doctor_appoitment/constants.dart';
+import 'package:doctor_appoitment/auth/firebase/fire_base_service.dart';
 import 'package:doctor_appoitment/screens/Sing_up_screen.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
 import 'package:doctor_appoitment/styles/text_styles.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
 import 'package:doctor_appoitment/widget/custom_text_Form_field.dart';
-import 'package:doctor_appoitment/widget/loging_buttom.dart';
 import 'package:doctor_appoitment/widget/loging_with_facebook_and_google.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +21,21 @@ class _LoginPageBodyState extends State<LoginPageBody> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late bool _passwordVisible = true;
+
+  FireBaseService regesrter = FireBaseService();
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +70,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     ],
                   ),
                   CustomTextField(
+                    controller: emailController,
                     hintText: 'oussama@example.com',
                     validator: confirmEmail,
                   ),
@@ -73,6 +88,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     ],
                   ),
                   CustomTextField(
+                    controller: passwordController,
                     hintText: 'Password',
                     obscureText: _passwordVisible,
                     suffixIcon: IconButton(
@@ -108,8 +124,9 @@ class _LoginPageBodyState extends State<LoginPageBody> {
 
                   CostomBottom(
                     text: 'Sing in',
-                    onTap: () {
+                    onTap: ()  {
                       if (formKey.currentState!.validate()) {
+                  
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {

@@ -1,8 +1,10 @@
+import 'package:doctor_appoitment/auth/firebase/fire_base_service.dart';
 import 'package:doctor_appoitment/constants.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
 import 'package:doctor_appoitment/widget/custom_text_Form_field.dart';
 import 'package:doctor_appoitment/widget/loging_with_facebook_and_google.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SingUpBody extends StatefulWidget {
@@ -16,7 +18,24 @@ class _SingUpBodyState extends State<SingUpBody> {
   final formKey = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late TextEditingController nameController;
+
   late bool _passwordVisible = false;
+  FireBaseService regesrter = FireBaseService();
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,6 +89,7 @@ class _SingUpBodyState extends State<SingUpBody> {
                     ],
                   ),
                   CustomTextField(
+                    controller: emailController,
                     hintText: 'example@gmail.com',
                     validator: confirmEmail,
                   ),
@@ -87,6 +107,7 @@ class _SingUpBodyState extends State<SingUpBody> {
                     ],
                   ),
                   CustomTextField(
+                    controller: passwordController,
                     hintText: 'Password',
                     obscureText: _passwordVisible,
                     suffixIcon: IconButton(
@@ -113,6 +134,7 @@ class _SingUpBodyState extends State<SingUpBody> {
                     text: 'Sing up',
                     onTap: () {
                       if (formKey.currentState!.validate()) {
+                        singUp();
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
@@ -156,6 +178,13 @@ class _SingUpBodyState extends State<SingUpBody> {
         ),
       ),
     );
+  }
+
+  void singUp() async{
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    User? user = await regesrter.singUp(email, password);
   }
 
   String? confirmPassword(value) {
