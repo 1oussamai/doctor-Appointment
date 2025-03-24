@@ -62,7 +62,7 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
               'skip',
               style: TextStyle(
                 fontSize: 20,
-                color: kPrimeryColor,
+                color: kMainColor,
               ),
             ),
           ),

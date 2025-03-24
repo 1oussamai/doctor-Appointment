@@ -12,7 +12,7 @@ class CostomBottom extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: kPrimeryColor,
+          color: kMainColor,
         ),
         height: 60,
         width: double.infinity,
