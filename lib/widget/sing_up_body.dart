@@ -1,7 +1,7 @@
 import 'package:doctor_appoitment/constants.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
-import 'package:doctor_appoitment/widget/custom_text_field.dart';
+import 'package:doctor_appoitment/widget/custom_text_Form_field.dart';
 import 'package:doctor_appoitment/widget/loging_with_facebook_and_google.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +16,7 @@ class _SingUpBodyState extends State<SingUpBody> {
   final formKey = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late bool _passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,7 +30,7 @@ class _SingUpBodyState extends State<SingUpBody> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   const Text(
@@ -87,7 +88,19 @@ class _SingUpBodyState extends State<SingUpBody> {
                   ),
                   CustomTextField(
                     hintText: 'Password',
-                    suffixIcon: const Icon(Icons.visibility_off),
+                    obscureText: _passwordVisible,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
+                      },
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
                     validator: confirmPassword,
                   ),
 

@@ -1,8 +1,9 @@
 import 'package:doctor_appoitment/constants.dart';
 import 'package:doctor_appoitment/screens/Sing_up_screen.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
+import 'package:doctor_appoitment/styles/text_styles.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
-import 'package:doctor_appoitment/widget/custom_text_field.dart';
+import 'package:doctor_appoitment/widget/custom_text_Form_field.dart';
 import 'package:doctor_appoitment/widget/loging_buttom.dart';
 import 'package:doctor_appoitment/widget/loging_with_facebook_and_google.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
   final formKey = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late bool _passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +36,16 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Sing In',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text('welcome back ! you have been missed'),
                   const SizedBox(
-                    height: 80,
+                    height: 50,
+                  ),
+                  const Text('Sing In', style: Appstyles.primaryText),
+                  const Text(
+                    'welcome back ! you have been missed',
+                    style: Appstyles.subtitleText,
+                  ),
+                  const SizedBox(
+                    height: 40,
                   ),
                   const Row(
                     children: [
@@ -72,24 +74,35 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                   ),
                   CustomTextField(
                     hintText: 'Password',
-                    suffixIcon: const Icon(Icons.visibility_off),
+                    obscureText: _passwordVisible,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
+                      },
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
                     validator: confirmPassword,
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         'Forget password ?',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: kMainColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Appstyles.mainText,
                       ),
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   // adding my costum botton
 
@@ -107,7 +120,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     },
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
 
                   const LogingWithFacebookAndGoogle(),
@@ -127,12 +140,10 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                             return const SingUpScreen();
                           }));
                         },
-                        child: const Text("Sing up",
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: kMainColor,
-                              fontWeight: FontWeight.w600,
-                            )),
+                        child: const Text(
+                          "Sing up",
+                          style: Appstyles.mainText,
+                        ),
                       ),
                     ],
                   )
