@@ -1,3 +1,4 @@
+import 'package:doctor_appoitment/auth/firebase/auth_page.dart';
 import 'package:doctor_appoitment/auth/firebase/fire_base_service.dart';
 import 'package:doctor_appoitment/constants.dart';
 import 'package:doctor_appoitment/screens/home_page.dart';
@@ -135,12 +136,7 @@ class _SingUpBodyState extends State<SingUpBody> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         singUp();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return const HomePage();
-                          }),
-                        );
+                  
                       }
                     },
                   ),
@@ -180,7 +176,7 @@ class _SingUpBodyState extends State<SingUpBody> {
     );
   }
 
-  void singUp() async{
+  void singUp() async {
     String email = emailController.text;
     String password = passwordController.text;
 

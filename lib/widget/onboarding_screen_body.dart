@@ -1,3 +1,6 @@
+// ignore_for_file: dead_code
+
+import 'package:doctor_appoitment/auth/firebase/auth_page.dart';
 import 'package:doctor_appoitment/constants.dart';
 import 'package:doctor_appoitment/screens/login_page.dart';
 import 'package:doctor_appoitment/widget/intro_body.dart';
@@ -49,10 +52,23 @@ class _OnboardingScreenBodyState extends State<OnboardingScreenBody> {
         ),
         GestureDetector(
           onTap: () {
+            controller.nextPage(
+                duration: Duration(milliseconds: 50), curve: Curves.bounceIn);
+          },
+          child: Container(
+            alignment: const Alignment(0.7, 0.75),
+            child: Text(
+              'next',
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
-                return LoginPage();
+                return const AuthPage();
               }),
             );
           },

@@ -12,7 +12,20 @@
           "package_name": "com.example.doctor_appoitment"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "879502825049-07jc3v81qtj7uepcj3se29k99n2qukpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doctor_appoitment",
+            "certificate_hash": "5b2e57c083b4cc1181b7c370b49635c936de20d6"
+          }
+        },
+        {
+          "client_id": "879502825049-a4865a5k5jq54rrnp91tkevao3uqriba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBbTCpGXf26b0Rl1DZ4P_w2nBlqV4Uf7k0"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879502825049-92diccmle0rsko8l3epfjtcu38i980bs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "879502825049-apcjq6qlkgauac038jvkb7d6f1ful7ll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.doctorAppoitment"
+              }
+            }
+          ]
         }
       }
     }

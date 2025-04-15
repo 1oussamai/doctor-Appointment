@@ -5,6 +5,7 @@ import 'package:doctor_appoitment/styles/text_styles.dart';
 import 'package:doctor_appoitment/widget/costom_bottom.dart';
 import 'package:doctor_appoitment/widget/custom_text_Form_field.dart';
 import 'package:doctor_appoitment/widget/loging_with_facebook_and_google.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageBody extends StatefulWidget {
@@ -22,7 +23,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
   late TextEditingController passwordController;
   late bool _passwordVisible = true;
 
-  FireBaseService regesrter = FireBaseService();
+  FireBaseService logIn = FireBaseService();
   @override
   void initState() {
     super.initState();
@@ -32,9 +33,9 @@ class _LoginPageBodyState extends State<LoginPageBody> {
 
   @override
   void dispose() {
+    super.dispose();
     emailController.dispose();
     passwordController.dispose();
-    super.dispose();
   }
 
   @override
@@ -124,15 +125,13 @@ class _LoginPageBodyState extends State<LoginPageBody> {
 
                   CostomBottom(
                     text: 'Sing in',
-                    onTap: ()  {
+                    onTap: () async {
                       if (formKey.currentState!.validate()) {
-                  
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return const HomePage();
-                          }),
-                        );
+                        await logIn.logIn(
+                            emailController.text, passwordController.text);
+
+                        emailController.clear();
+                        passwordController.clear();
                       }
                     },
                   ),

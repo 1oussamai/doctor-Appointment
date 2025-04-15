@@ -15,7 +15,7 @@ class LogingButtom extends StatelessWidget {
         width: 60,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Color(0xffE6E6E6),
+            color: const Color(0xffE6E6E6),
           ),
           borderRadius: BorderRadius.circular(30),
         ),
